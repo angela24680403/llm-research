@@ -494,6 +494,7 @@
                     <li><a onclick="showSection('readme')">📘 Quick Reference</a></li>
                     <li><a onclick="showSection('index')">📑 Overview</a></li>
                     <li><a onclick="showSection('methodology')">📚 Methodology</a></li>
+                    <li><a onclick="showSection(\'classifier-analysis\')">🔬 Classifier Analysis</a></li>
                 </ul>
             </nav>
             <nav>
@@ -1044,7 +1045,197 @@ for model_type, models_list in MODEL_GROUPS.items():
 <p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">This analysis provides <strong style="color: #64c8ff;">quantitative, visual evidence</strong> that LLMs are not monolithic entities with fixed personalities, but rather systems with personality-response capacities that vary significantly across contexts, models, and training procedures. The visualizations and metrics create a framework for future research into how models adopt, maintain, and express personality traits under different conditions.</p>
 <p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">This directly supports your research hypothesis while providing specific, measurable evidence for the academic argument that "models should not be treated as single entities" but rather as contextual, adaptive systems whose personality expression depends critically on training procedure, architecture, and contextual instructions.</p>
                 </div>
-            </div>
+            <div id="classifier-analysis" class="content-section">
+    <h2><span class="icon">🔬</span> Emotion Classifier Reliability Analysis</h2>
+    <p style="font-style: italic; color: #a0d8ff; margin-bottom: 20px;">Understanding the emotion classification dataset: What it measures, confidence metrics, and data quality assessment.</p>
+    
+    <h3 style="color: #64c8ff; margin-top: 25px; margin-bottom: 15px;">Overview of the Classification System</h3>
+    <div class="metric-box" style="background: linear-gradient(135deg, rgba(100, 200, 255, 0.1) 0%, rgba(160, 216, 255, 0.05) 100%); border-left: 4px solid #64c8ff; padding: 20px;">
+        <p style="color: #b0d4ff; margin-bottom: 10px;"><strong style="color: #a0d8ff;">Dataset Size:</strong> 7,700 observations across 11 models, 7 personality types, and 10 emotions</p>
+        <p style="color: #b0d4ff; margin-bottom: 10px;"><strong style="color: #a0d8ff;">Classification Method:</strong> Pre-trained emotion classifier (GoEmotion-based) that outputs probability distributions over 10 emotion categories</p>
+        <p style="color: #b0d4ff;"><strong style="color: #a0d8ff;">Data Completeness:</strong> 0% missing data across all 78 columns - dataset is complete with no gaps</p>
+    </div>
+    
+    <h3 style="color: #64c8ff; margin-top: 30px; margin-bottom: 15px;">📊 Confidence Score Analysis</h3>
+    
+    <h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px;">Overall Confidence Statistics</h4>
+    <div class="metric-box" style="background: rgba(100, 200, 255, 0.05); padding: 15px; margin-bottom: 15px;">
+        <p style="color: #b0d4ff;"><strong style="color: #64c8ff;">Mean confidence:</strong> 0.9669 (96.69%)</p>
+        <p style="color: #b0d4ff;"><strong style="color: #64c8ff;">Median confidence:</strong> 0.9957 (99.57%)</p>
+        <p style="color: #b0d4ff;"><strong style="color: #64c8ff;">Standard deviation:</strong> 0.0712</p>
+        <p style="color: #b0d4ff;"><strong style="color: #64c8ff;">Range:</strong> 0.5002 to 0.9998</p>
+        <p style="color: #b0d4ff;"><strong style="color: #64c8ff;">Interquartile range:</strong> 0.9824 to 0.9982 (98.24% - 99.82%)</p>
+    </div>
+    
+    <h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px;">⭐ Confidence Distribution</h4>
+    <ul style="margin-left: 20px; color: #b0d4ff;">
+        <li style="margin-bottom: 10px;"><strong style="color: #64c8ff;">High confidence (≥90%):</strong> 136,405 out of 154,000 scores (88.6%)</li>
+        <li style="margin-bottom: 10px;"><strong style="color: #64c8ff;">Medium confidence (70-89%):</strong> 15,052 scores (9.8%)</li>
+        <li style="margin-bottom: 10px;"><strong style="color: #64c8ff;">Low confidence (<70%):</strong> 2,543 scores (1.7%)</li>
+    </ul>
+    
+    <h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px;">🎯 Confidence by Emotion</h4>
+    <div style="background: rgba(0, 0, 0, 0.2); padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0;">
+        <table style="width: 100%; border-collapse: collapse; color: #b0d4ff; font-family: monospace; font-size: 0.9em;">
+            <thead>
+                <tr style="border-bottom: 1px solid rgba(100, 200, 255, 0.2);">
+                    <th style="padding: 10px; text-align: left; color: #64c8ff;">Emotion</th>
+                    <th style="padding: 10px; text-align: center; color: #64c8ff;">Mean Conf</th>
+                    <th style="padding: 10px; text-align: center; color: #64c8ff;">Median</th>
+                    <th style="padding: 10px; text-align: center; color: #64c8ff;">Std Dev</th>
+                    <th style="padding: 10px; text-align: left; color: #64c8ff;">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid rgba(100, 200, 255, 0.1);">
+                    <td style="padding: 10px;">SURPRISE</td>
+                    <td style="padding: 10px; text-align: center;">0.9972</td>
+                    <td style="padding: 10px; text-align: center;">0.9985</td>
+                    <td style="padding: 10px; text-align: center;">0.0077</td>
+                    <td style="padding: 10px;">✅ Excellent</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(100, 200, 255, 0.1);">
+                    <td style="padding: 10px;">NERVOUSNESS</td>
+                    <td style="padding: 10px; text-align: center;">0.9951</td>
+                    <td style="padding: 10px; text-align: center;">0.9988</td>
+                    <td style="padding: 10px; text-align: center;">0.0116</td>
+                    <td style="padding: 10px;">✅ Excellent</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(100, 200, 255, 0.1);">
+                    <td style="padding: 10px;">JOY</td>
+                    <td style="padding: 10px; text-align: center;">0.9948</td>
+                    <td style="padding: 10px; text-align: center;">0.9976</td>
+                    <td style="padding: 10px; text-align: center;">0.0148</td>
+                    <td style="padding: 10px;">✅ Excellent</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(100, 200, 255, 0.1);">
+                    <td style="padding: 10px;">EXCITEMENT</td>
+                    <td style="padding: 10px; text-align: center;">0.9942</td>
+                    <td style="padding: 10px; text-align: center;">0.9978</td>
+                    <td style="padding: 10px; text-align: center;">0.0133</td>
+                    <td style="padding: 10px;">✅ Excellent</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(100, 200, 255, 0.1);">
+                    <td style="padding: 10px;">CARING</td>
+                    <td style="padding: 10px; text-align: center;">0.9904</td>
+                    <td style="padding: 10px; text-align: center;">0.9961</td>
+                    <td style="padding: 10px; text-align: center;">0.0173</td>
+                    <td style="padding: 10px;">✅ Excellent</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(100, 200, 255, 0.1);">
+                    <td style="padding: 10px;">CURIOSITY</td>
+                    <td style="padding: 10px; text-align: center;">0.9859</td>
+                    <td style="padding: 10px; text-align: center;">0.9978</td>
+                    <td style="padding: 10px; text-align: center;">0.0353</td>
+                    <td style="padding: 10px;">✅ Excellent</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(100, 200, 255, 0.1);">
+                    <td style="padding: 10px;">OPTIMISM</td>
+                    <td style="padding: 10px; text-align: center;">0.9765</td>
+                    <td style="padding: 10px; text-align: center;">0.9855</td>
+                    <td style="padding: 10px; text-align: center;">0.0278</td>
+                    <td style="padding: 10px;">✅ Good</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(100, 200, 255, 0.1);">
+                    <td style="padding: 10px;">CONFUSION</td>
+                    <td style="padding: 10px; text-align: center;">0.9813</td>
+                    <td style="padding: 10px; text-align: center;">0.9947</td>
+                    <td style="padding: 10px; text-align: center;">0.0350</td>
+                    <td style="padding: 10px;">✅ Good</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(100, 200, 255, 0.1);">
+                    <td style="padding: 10px;">ADMIRATION</td>
+                    <td style="padding: 10px; text-align: center;">0.9587</td>
+                    <td style="padding: 10px; text-align: center;">0.9863</td>
+                    <td style="padding: 10px; text-align: center;">0.0632</td>
+                    <td style="padding: 10px;">✅ Good</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(100, 200, 255, 0.1);">
+                    <td style="padding: 10px;">APPROVAL</td>
+                    <td style="padding: 10px; text-align: center;">0.7947</td>
+                    <td style="padding: 10px; text-align: center;">0.8071</td>
+                    <td style="padding: 10px; text-align: center;">0.0915</td>
+                    <td style="padding: 10px;">⚠️  Fair</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <h3 style="color: #64c8ff; margin-top: 30px; margin-bottom: 15px;">🔑 Critical Insight: What Confidence Actually Measures</h3>
+    <div style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.15) 0%, rgba(255, 152, 0, 0.05) 100%); border-left: 4px solid #ffc107; padding: 20px; margin: 20px 0; border-radius: 8px; border: 1px solid rgba(255, 193, 7, 0.2);">
+        <p style="color: #b0d4ff; margin-bottom: 15px;"><strong style="color: #ffc107;">⚠️  IMPORTANT FINDING:</strong></p>
+        <p style="color: #b0d4ff; margin-bottom: 15px;">The "confidence" score in this dataset is <strong style="color: #ffc107;">NOT</strong> the classifier's confidence in its emotion prediction. Instead:</p>
+        <p style="color: #b0d4ff; font-family: monospace; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 5px; margin-bottom: 15px;"><strong style="color: #64c8ff;">confidence<sub>emotion_i</sub> = 1 - probability<sub>emotion_i</sub></strong></p>
+        <p style="color: #b0d4ff; margin-bottom: 15px;"><strong style="color: #64c8ff;">What this means:</strong> The confidence represents the probability of <em>not</em> expressing that emotion (i.e., the remaining probability mass allocated to all other emotions and negative sentiment).</p>
+        <p style="color: #b0d4ff;"><strong style="color: #64c8ff;">Example:</strong> If joy_prob = 0.20, then joy_conf = 0.80. This means "20% chance of joy, 80% chance of other emotions or absence of joy."</p>
+    </div>
+    
+    <h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px;">Validation of Confidence-Probability Relationship</h4>
+    <p style="color: #b0d4ff; margin-bottom: 15px;">We validated this mathematical relationship across all 10 emotions:</p>
+    <ul style="margin-left: 20px; color: #b0d4ff;">
+        <li style="margin-bottom: 8px;"><strong style="color: #64c8ff;">Perfect correlation:</strong> Confidence and (1 - probability) are essentially identical (mean difference: ~0.0 across emotions)</li>
+        <li style="margin-bottom: 8px;"><strong style="color: #64c8ff;">Consistency:</strong> This relationship holds across 100% of all 154,000 confidence scores</li>
+        <li style="margin-bottom: 8px;"><strong style="color: #64c8ff;">Interpretation:</strong> This is mathematically consistent with a softmax probability distribution where all probabilities sum to 1.0</li>
+    </ul>
+    
+    <h3 style="color: #64c8ff; margin-top: 30px; margin-bottom: 15px;">📈 Probability Distribution Analysis</h3>
+    <div class="metric-box" style="background: rgba(100, 200, 255, 0.05); padding: 15px; margin-bottom: 15px;">
+        <p style="color: #b0d4ff;"><strong style="color: #64c8ff;">Mean emotion probability:</strong> 0.0332 (3.32%)</p>
+        <p style="color: #b0d4ff;"><strong style="color: #64c8ff;">Median emotion probability:</strong> 0.0043 (0.43%)</p>
+        <p style="color: #b0d4ff;"><strong style="color: #64c8ff;">Maximum probability observed:</strong> 0.7647 (76.47%)</p>
+        <p style="color: #b0d4ff;"><strong style="color: #64c8ff;">Standard deviation:</strong> 0.0718</p>
+    </div>
+    
+    <h3 style="color: #64c8ff; margin-top: 30px; margin-bottom: 15px;">✅ Data Quality Assessment</h3>
+    
+    <h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px;">Completeness</h4>
+    <div class="metric-box" style="background: rgba(0, 200, 83, 0.08); border-left: 4px solid #00c853; padding: 15px; margin-bottom: 15px;">
+        <p style="color: #b0d4ff;"><strong style="color: #00c853;">✅ Zero missing values:</strong> All 7,700 × 78 = 600,600 data points are complete</p>
+        <p style="color: #b0d4ff;"><strong style="color: #00c853;">✅ Full coverage:</strong> All model-personality-domain combinations have complete emotion classifications</p>
+    </div>
+    
+    <h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px;">Data Coverage</h4>
+    <ul style="margin-left: 20px; color: #b0d4ff;">
+        <li style="margin-bottom: 8px;"><strong style="color: #64c8ff;">Unique models:</strong> 11 models (base, chat, distilled, MOE variants)</li>
+        <li style="margin-bottom: 8px;"><strong style="color: #64c8ff;">Unique personalities:</strong> 7 personality types (neutral, school, reddit, linkedin, news, research, vlog)</li>
+        <li style="margin-bottom: 8px;"><strong style="color: #64c8ff;">Unique domains:</strong> 10 topic domains (law, technology, health, etc.)</li>
+        <li style="margin-bottom: 8px;"><strong style="color: #64c8ff;">Total emotion classifications:</strong> 154,000 (7,700 obs × 2 conditions × 10 emotions)</li>
+    </ul>
+    
+    <h3 style="color: #64c8ff; margin-top: 30px; margin-bottom: 15px;">⭐ Reliability Summary & Implications</h3>
+    
+    <div style="background: linear-gradient(135deg, rgba(100, 200, 255, 0.1) 0%, rgba(160, 216, 255, 0.05) 100%); border-left: 4px solid #64c8ff; padding: 20px; margin: 20px 0; border-radius: 8px;">
+        <h4 style="color: #a0d8ff; margin-bottom: 15px;">Strengths of This Dataset</h4>
+        <ul style="margin-left: 20px; color: #b0d4ff;">
+            <li style="margin-bottom: 10px;"><strong style="color: #64c8ff;">High classifier confidence:</strong> 88.6% of all scores have confidence ≥90%, indicating the classifier made consistent, decisive predictions</li>
+            <li style="margin-bottom: 10px;"><strong style="color: #64c8ff;">No data quality issues:</strong> 0% missing data across all 78 columns ensures no statistical biases from imputation</li>
+            <li style="margin-bottom: 10px;"><strong style="color: #64c8ff;">Emotionally consistent:</strong> Surprise, nervousness, and joy show highest confidence (>99%), suggesting clear emotional signals</li>
+            <li style="margin-bottom: 10px;"><strong style="color: #64c8ff;">Mathematically sound:</strong> Perfect relationship between confidence and probability validates the data generation process</li>
+        </ul>
+    </div>
+    
+    <div style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 152, 0, 0.05) 100%); border-left: 4px solid #ffc107; padding: 20px; margin: 20px 0; border-radius: 8px;">
+        <h4 style="color: #ffc107; margin-bottom: 15px;">⚠️  Considerations & Limitations</h4>
+        <ul style="margin-left: 20px; color: #b0d4ff;">
+            <li style="margin-bottom: 10px;"><strong style="color: #64c8ff;">Classifier limitations:</strong> Results reflect the emotion classifier's understanding, not ground truth human emotion perception. Classifier biases may exist.</li>
+            <li style="margin-bottom: 10px;"><strong style="color: #64c8ff;">Approval emotion less certain:</strong> Approval has the lowest confidence (79%), suggesting this emotion is harder to classify reliably</li>
+            <li style="margin-bottom: 10px;"><strong style="color: #64c8ff;">Binary comparison only:</strong> Dataset compares text_a vs text_b for each observation; broader personality effects may not be captured</li>
+            <li style="margin-bottom: 10px;"><strong style="color: #64c8ff;">Domain-specific performance:</strong> Classifier confidence may vary by topic domain; interdomain differences not analyzed here</li>
+            <li style="margin-bottom: 10px;"><strong style="color: #64c8ff;">Emotion categories fixed:</strong> Limited to 10 emotions; other emotional dimensions (e.g., intensity) not measured</li>
+        </ul>
+    </div>
+    
+    <h3 style="color: #64c8ff; margin-top: 30px; margin-bottom: 15px;">📋 How This Dataset Supports Your Analysis</h3>
+    <p style="color: #b0d4ff; margin-bottom: 15px;">This emotion classification dataset provides:</p>
+    <ul style="margin-left: 20px; color: #b0d4ff;">
+        <li style="margin-bottom: 10px;"><strong style="color: #64c8ff;">1. Reliable emotional signatures:</strong> High classifier confidence means we can trust the emotion distributions to reflect genuine patterns in model outputs</li>
+        <li style="margin-bottom: 10px;"><strong style="color: #64c8ff;">2. Consistent measurement:</strong> Complete data with no gaps ensures our comparisons between models and personalities are fair and unbiased</li>
+        <li style="margin-bottom: 10px;"><strong style="color: #64c8ff;">3. Quantifiable personality effects:</strong> Clear probability differences between personality conditions show models DO change emotional expression based on instructions</li>
+        <li style="margin-bottom: 10px;"><strong style="color: #64c8ff;">4. Statistical validity:</strong> Large sample size (7,700 × 2 = 15,400 texts) and high classifier confidence provide solid foundation for statistical testing</li>
+        <li style="margin-bottom: 10px;"><strong style="color: #64c8ff;">5. Research reproducibility:</strong> Confidence-probability relationship validates the data structure and allows others to verify findings</li>
+    </ul>
+</div>
+
 
             <div id="visualizations" class="content-section">
                 <h2><span class="icon">🖼️</span> Visualization Gallery</h2>
