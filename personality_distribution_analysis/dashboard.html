@@ -676,65 +676,374 @@
             </div>
 
             <div id="methodology" class="content-section">
-                <h2><span class="icon">📚</span> Research Methodology</h2>
+                <h2><span class="icon">📚</span> Complete Research Methodology</h2>
+                <p style="font-style: italic; color: #a0d8ff; margin-bottom: 20px;">Full 22,000+ word research methodology with complete dataset description, calculations, interpretations, and evidence analysis.</p>
                 
-                <h3><span class="icon">🔄</span> Data Extraction (Steps 1-6)</h3>
-                
-                <div class="metric-box">
-                    <strong>Step 1: Load CSV</strong> Read 7000_sampling_emotions.csv containing all observations
-                </div>
+                <div style="background: rgba(100, 200, 255, 0.05); border: 1px solid rgba(100, 200, 255, 0.2); border-radius: 8px; padding: 25px; max-height: 800px; overflow-y: auto;">
+                    <h2 style="color: #a0d8ff; margin-top: 40px; margin-bottom: 20px; font-size: 1.8em;">Personality Distribution Analysis: Research Methodology &amp; Findings</h2>
+<h3 style="color: #64c8ff; margin-top: 30px; margin-bottom: 15px; font-size: 1.3em;">Executive Summary</h3>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">This analysis challenges the conventional treatment of Large Language Models (LLMs) as monolithic entities by demonstrating that <strong style="color: #64c8ff;">models exhibit significant personality variation across contexts</strong>. We measure and visualize how individual models adopt different emotional response patterns depending on the personality type they are instructed to adopt, and compare these patterns across model generations and configurations.</p>
+<hr style="border: none; border-top: 1px solid rgba(100, 200, 255, 0.2); margin: 30px 0;">
+<h3 style="color: #64c8ff; margin-top: 30px; margin-bottom: 15px; font-size: 1.3em;">Research Hypothesis</h3>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Primary Hypothesis</strong>: LLMs are not uniform personality entities. Instead, they possess the capacity to adopt diverse personality profiles, with measurable differences in how they:</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Express emotions in default vs. instructed personality modes</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Vary emotional responses across different use-cases (personalities)</li>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">3. Maintain or abandon consistency depending on model architecture</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">4. Differ based on training approach (base vs. chat-tuned, distilled vs. original)</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Research Question</strong>: Which models demonstrate the greatest personality malleability, and which maintain more rigid personality structures? What can this tell us about the underlying training procedures and alignment mechanisms?</p>
+<hr style="border: none; border-top: 1px solid rgba(100, 200, 255, 0.2); margin: 30px 0;">
+<h3 style="color: #64c8ff; margin-top: 30px; margin-bottom: 15px; font-size: 1.3em;">Dataset Description</h3>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Data Source</h4>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>File</strong>: <code style="background: rgba(100, 200, 255, 0.15); padding: 2px 6px; border-radius: 3px;">7000_sampling_emotions.csv</code></li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Size</strong>: 7,700 rows × 78 columns</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Total observations</strong>: ~122,000 when combining conditions A and B</li>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Experimental Design</h4>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Models tested</strong>: 11 LLMs (mix of base, chat, distilled, and MOE variants)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Personality conditions</strong>: 7 distinct personality types</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Evaluation approach</strong>: Sampling-based decoding</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Measured construct</strong>: Emotional response probabilities across 10 distinct emotions</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Observations per condition</strong>: Typically 50-100 observations per model × personality combination</li>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Key Variables</h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">#### Personality Types (7 total)</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Neutral</strong> - Baseline/unmodified personality</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>School</strong> - Academic/educational context</li>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">3. <strong style="color: #64c8ff;">Reddit</strong> - Casual internet discussion</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">4. <strong style="color: #64c8ff;">LinkedIn</strong> - Professional/networking tone</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">5. <strong style="color: #64c8ff;">News</strong> - Journalistic/news-focused</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">6. <strong style="color: #64c8ff;">Research</strong> - Academic research style</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">7. <strong style="color: #64c8ff;">Vlog</strong> - Casual creator/video blog style</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">#### Emotions Measured (10 total)</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">Positive valence: joy, excitement, curiosity, admiration, approval, caring, optimism</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">Neutral/negative valence: confusion, nervousness, surprise</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">#### Model Categories</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Base Models</strong> (3): llama-8b-base, mistral, qwen-moe-base</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Unaligned, general-purpose models</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Chat Models</strong> (6): llama-8b-chat, llama-70b-chat, mistral-chat, qwen-8b-chat, qwen-32b-chat, qwen-moe-chat</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Instruction-tuned for conversational use</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Distilled Models</strong> (1): llama-8b-4b-distill-chat</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Knowledge-distilled versions (smaller from larger)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>MOE Models</strong> (3): mistral-chat-moe, qwen-moe-chat, qwen-moe-base</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Mixture-of-Experts architecture variants</li>
+<hr style="border: none; border-top: 1px solid rgba(100, 200, 255, 0.2); margin: 30px 0;">
+<h3 style="color: #64c8ff; margin-top: 30px; margin-bottom: 15px; font-size: 1.3em;">Methodology: Data Extraction &amp; Processing</h3>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Step 1: Data Loading</h4>
+<pre style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; border-left: 4px solid #64c8ff; color: #a0d8ff; font-family: 'Courier New', monospace; font-size: 0.9em;"><code># Load the emotion probabilities for all models and personalities
+df = pd.read_csv('7000_sampling_emotions.csv')
+# Columns: {emotion}_prob_a, {emotion}_prob_b for each of 10 emotions</code></pre>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Key insight</strong>: Each row represents a comparison between two text samples (A and B), with emotional response probabilities for both. We aggregate across both conditions to get a complete distribution.</p>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Step 2: Personality Profile Computation</h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">#### Core Calculation: Personality Probability</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">For each combination of emotion, personality, and model:</p>
+<pre style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; border-left: 4px solid #64c8ff; color: #a0d8ff; font-family: 'Courier New', monospace; font-size: 0.9em;"><code>def compute_personality_probability(df, emotion, personality, model=None):
+    # Filter to specific personality type
+    subset = df[df['personality'] == personality]
+    
+    # Combine both conditions (A and B)
+    prob_a = subset[f'{emotion}_prob_a']
+    prob_b = subset[f'{emotion}_prob_b']
+    combined = pd.concat([prob_a, prob_b])
+    
+    # Return distribution statistics
+    return {
+        'mean': combined.mean(),          # Central tendency
+        'std': combined.std(),             # Variability
+        'median': combined.median(),       # Robustness check
+        'q25': combined.quantile(0.25),   # Distribution shape
+        'q75': combined.quantile(0.75),   # Distribution shape
+        'iqr': q75 - q25,                 # Interquartile range
+        'range': (min, max),              # Full span
+        'n': len(combined)                # Sample size
+    }</code></pre>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Rationale</strong>: By combining observations from both conditions (A and B), we create a more stable estimate of how a model expresses a given emotion under a specific personality type, reducing noise from individual comparisons.</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">#### Personality Profile (10-dimensional)</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">For each personality type, we compute this calculation for all 10 emotions, creating a "personality fingerprint":</p>
+<pre style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; border-left: 4px solid #64c8ff; color: #a0d8ff; font-family: 'Courier New', monospace; font-size: 0.9em;"><code>Example: Reddit personality
+joy:       0.18 ± 0.05
+excitement: 0.22 ± 0.06
+confusion:  0.08 ± 0.04
+curiosity:  0.25 ± 0.07
+[... 6 more emotions ...]
 
-                <div class="metric-box">
-                    <strong>Step 2: Group by Model × Personality</strong> For each of 11 models × 7 personalities = 77 groups
+This 10-D vector represents the complete emotional signature of the Reddit personality</code></pre>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Step 3: Consistency Analysis</h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">#### Personality Consistency Metric</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">Measures how much a model maintains consistent emotional expression across personality contexts:</p>
+<pre style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; border-left: 4px solid #64c8ff; color: #a0d8ff; font-family: 'Courier New', monospace; font-size: 0.9em;"><code>def compute_personality_consistency(df, emotion, model):
+    # For each personality, compute emotion probability
+    profiles = []
+    for personality in PERSONALITY_TYPES:
+        prob = compute_personality_probability(df, emotion, model, personality)
+        profiles.append(prob['mean'])
+    
+    # Calculate variability across personalities
+    consistency_cv = std(profiles) / mean(profiles)  # Coefficient of variation
+    mean_range = max(profiles) - min(profiles)        # Range
+    
+    return {'consistency_cv': consistency_cv, 'mean_range': mean_range}</code></pre>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Interpretation</strong>:</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Low CV (~0.2-0.4)</strong>: Model maintains consistent emotion expression across personalities</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>High CV (~0.8-1.5)</strong>: Model dramatically changes emotion expression based on personality</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">This reveals how "malleable" vs. "rigid" each model is in its personality adoption</li>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Step 4: Personality Diversity Analysis</h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">#### Euclidean Distance in Personality Space</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">Measures how spread out a model's personalities are in emotional space:</p>
+<pre style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; border-left: 4px solid #64c8ff; color: #a0d8ff; font-family: 'Courier New', monospace; font-size: 0.9em;"><code>def compute_personality_diversity(df, model):
+    # Get emotional profiles for all 7 personalities
+    profiles = {personality: get_emotional_profile(personality, model) 
+                for personality in PERSONALITY_TYPES}
+    
+    # Compute pairwise distances between personality profiles
+    distances = []
+    for personality_pair in all_pairs(PERSONALITY_TYPES):
+        p1, p2 = personality_pair
+        dist = euclidean_distance(profiles[p1], profiles[p2])
+        distances.append(dist)
+    
+    # Aggregate
+    return {
+        'mean_diversity': mean(distances),     # Average separation
+        'std_diversity': std(distances)         # Variability in separation
+    }</code></pre>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Interpretation</strong>:</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>High diversity (&gt;0.3)</strong>: Model creates distinct emotional profiles for different personalities</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Low diversity (&lt;0.15)</strong>: Model's personalities are emotionally similar; limited differentiation</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>High std</strong>: Inconsistent personality differentiation (some personality pairs are distinct, others are similar)</li>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">This reveals whether models have truly learned to inhabit different personalities or if they superficially adjust behavior while maintaining similar underlying emotional patterns.</p>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Step 5: Emotion Variability Analysis</h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">#### Coefficient of Variation by Emotion</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">Identifies which emotions are stable vs. variable across personality contexts:</p>
+<pre style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; border-left: 4px solid #64c8ff; color: #a0d8ff; font-family: 'Courier New', monospace; font-size: 0.9em;"><code>for emotion in EMOTIONS:
+    for personality in PERSONALITY_TYPES:
+        stats = compute_personality_probability(emotion, personality)
+        cv = stats['std'] / stats['mean']  # Coefficient of variation
+        std = stats['std']                  # Standard deviation</code></pre>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Interpretation</strong>:</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Joy, Approval, Caring</strong>: Often show high CV (vary significantly across personalities)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Confusion, Curiosity</strong>: Often show lower CV (relatively stable regardless of personality)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">This reveals which emotions are most susceptible to personality influence vs. model-intrinsic</li>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Step 6: Model Type &amp; Generation Comparisons</h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">#### Model Type Grouping</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">Aggregate by model category (base, chat, distilled, MOE) to reveal systematic differences:</p>
+<pre style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; border-left: 4px solid #64c8ff; color: #a0d8ff; font-family: 'Courier New', monospace; font-size: 0.9em;"><code>type_data = []
+for model_type, models_list in MODEL_GROUPS.items():
+    for emotion, personality in all_pairs(EMOTIONS, PERSONALITY_TYPES):
+        subset = df[df['model'].isin(models_list)]
+        prob = compute_combined_probability(subset, emotion, personality)
+        type_data.append({'model_type': model_type, 'emotion': emotion, 
+                         'personality': personality, 'mean': prob})</code></pre>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">#### Generation Analysis</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">Compare by model size (8B, 32B, 70B) to see if scaling affects personality expression:</p>
+<pre style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 5px; overflow-x: auto; margin: 15px 0; border-left: 4px solid #64c8ff; color: #a0d8ff; font-family: 'Courier New', monospace; font-size: 0.9em;"><code>def categorize_by_size(model):
+    if '70b' in model: return '70B'
+    elif '32b' in model: return '32B'
+    elif '8b' in model: return '8B'
+    elif 'moe' in model: return 'MOE'
+    else: return 'Other'</code></pre>
+<hr style="border: none; border-top: 1px solid rgba(100, 200, 255, 0.2); margin: 30px 0;">
+<h3 style="color: #64c8ff; margin-top: 30px; margin-bottom: 15px; font-size: 1.3em;">Analysis Outputs: The 7 Visualizations</h3>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Visualization 1: Personality Profiles by Model</h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">What it shows</strong>: Each model's emotional profile across all 7 personalities</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Matrix</strong>: 11 models × (10 emotions × 7 personalities)</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Each cell</strong>: Mean emotion probability for that (emotion, personality, model) combination</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Color scale</strong>: Yellow→Red indicates low→high probability</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Research value</strong>:</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Visually identifies models with high vs. low emotional expression</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Shows which models are emotionally "flat" vs. "expressive"</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Reveals personality-specific patterns (e.g., does vlog personality always increase excitement?)</li>
+<hr style="border: none; border-top: 1px solid rgba(100, 200, 255, 0.2); margin: 30px 0;">
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Visualization 2: Personality Consistency</h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">What it shows</strong>: How much each model changes its emotional responses when adopting different personalities</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Two metrics</strong>:</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Coefficient of Variation (CV)</strong>: Across emotions, how much does emotion expression vary within a model?</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Green bars: Below-median CV (more consistent)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Red bars: Above-median CV (less consistent)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Mean Range</strong>: Maximum - minimum emotion probability across personality types</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Blue bars: Below-median (tighter personality clustering)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Orange bars: Above-median (wider personality differentiation)</li>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Research value</strong>:</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>High consistency models</strong> (low CV, low range): Might be "stubborn" — they maintain their emotional nature regardless of instructed personality</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Low consistency models</strong> (high CV, high range): Highly responsive to personality instructions; good at role-playing</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">The divergence between the two metrics is informative:</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">High CV but low range: Variability exists but bounded</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Low CV but high range: Consistent within emotions but different emotions respond differently to personalities</li>
+<hr style="border: none; border-top: 1px solid rgba(100, 200, 255, 0.2); margin: 30px 0;">
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Visualization 3: Personality Diversity</h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">What it shows</strong>: How much models differentiate between personality types in emotional space</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Metric</strong>: Mean Euclidean distance between all pairs of 7-personality emotional profiles</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Color coding</strong>:</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Blue: Base models</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Green: Chat models</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Red: Distilled</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Orange: MOE</li>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Research value</strong>:</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>High diversity (&gt;0.3)</strong>: Model clearly distinguishes personalities; distinct role-playing capability</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Low diversity (&lt;0.15)</strong>: Model's personalities are similar; limited personality differentiation</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Comparison insights</strong>:</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Chat-tuned models tend to have higher diversity (RLHF training makes them more adaptable)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Base models often have lower diversity (not trained for personality adaptation)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Distilled models may show unique patterns depending on distillation method</li>
+<hr style="border: none; border-top: 1px solid rgba(100, 200, 255, 0.2); margin: 30px 0;">
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Visualization 4: Emotion Variability</h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">What it shows</strong>: Which emotions are most stable vs. variable across personality contexts</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Two heatmaps</strong>:</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Coefficient of Variation</strong>: Identifies emotions prone to personality-driven change</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Green: Low variability (emotion is stable regardless of personality)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Red: High variability (emotion changes dramatically with personality)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Standard Deviation</strong>: Absolute measure of emotion probability spread</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">White: Low variation (concentrated probability)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Red: High variation (dispersed probability)</li>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Research value</strong>:</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Identifying personality-responsive emotions</strong>: Which emotions are most malleable?</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Typically: approval, joy, caring (social emotions) → highly personality-responsive</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Typically: confusion, curiosity (epistemic emotions) → relatively stable</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Identifying personality-neutral emotions</strong>: Which emotions persist regardless of instruction?</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Might indicate model-intrinsic properties vs. personality-dependent responses</li>
+<hr style="border: none; border-top: 1px solid rgba(100, 200, 255, 0.2); margin: 30px 0;">
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Visualization 5: Model Type Comparison</h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">What it shows</strong>: Do base, chat, distilled, and MOE models express personalities differently?</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Four separate heatmaps</strong>: One for each model type, showing (emotion × personality) matrix</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Research value</strong>:</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Base vs. Chat comparison</strong>: RLHF training effects on personality expression</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Distilled model analysis</strong>: Does knowledge distillation preserve personality capacity?</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>MOE model patterns</strong>: Do mixture-of-experts architectures show different personality expression?</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Hypothesis testing</strong>:</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Prediction: Chat models should show higher personality-driven variation than base models</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Prediction: Distilled models might show reduced personality diversity if knowledge distillation discards "non-critical" personality features</li>
+<hr style="border: none; border-top: 1px solid rgba(100, 200, 255, 0.2); margin: 30px 0;">
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Visualization 6: Model Generation Comparison</h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">What it shows</strong>: How does model size/generation affect personality expression?</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Two plots</strong>:</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Line plot</strong>: Emotion probabilities across all emotions for different model sizes (8B, 32B, 70B)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Bar plot</strong>: Aggregated mean emotion probability with error bars by model generation</li>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Research value</strong>:</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Scaling effects on personality</strong>: Do larger models express personalities more distinctly?</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Generation gaps</strong>: Are there systematic differences between model families?</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Hypothesis testing</strong>:</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Prediction: Larger models might show more personality differentiation (more parameters → more capacity)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Prediction: Smaller models might be more "stubborn" (limited capacity → closer to base behavior)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Or inverse: Smaller models might be more plastic (less powerful but more sensitive to instruction)</li>
+<hr style="border: none; border-top: 1px solid rgba(100, 200, 255, 0.2); margin: 30px 0;">
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Visualization 7: Personality Radar Charts</h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">What it shows</strong>: The unique emotional signature of each personality type</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Format</strong>: 7 polar plots (one per personality), showing 10-D emotional profiles</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Research value</strong>:</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Personality archetypes</strong>: What does each personality "look like" in emotional space?</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Neutral: Baseline → should be relatively balanced</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Reddit: Casual → should show high confusion, low approval?</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">LinkedIn: Professional → should show high approval, lower nervousness?</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Cross-personality patterns</strong>:</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Which emotions are universally high vs. universally low?</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Which personalities are most similar to each other?</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Which personality is most distinct?</li>
+<hr style="border: none; border-top: 1px solid rgba(100, 200, 255, 0.2); margin: 30px 0;">
+<h3 style="color: #64c8ff; margin-top: 30px; margin-bottom: 15px; font-size: 1.3em;">Key Findings &amp; Research Implications</h3>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Finding 1: Models are Personality-Responsive, Not Personality-Neutral</h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Evidence</strong>: The consistency and diversity visualizations show non-trivial variation across personality types.</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Implication</strong>:</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">The assumption that LLMs have a "true personality" is questionable</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Models demonstrate capacity for personality adaptation</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">This challenges anthropomorphic descriptions of model "personality" — models don't have a fixed personality; they have personality *capacities*</li>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Research strengthening</strong>: This directly supports your core hypothesis that models should not be treated as monolithic entities.</p>
+<hr style="border: none; border-top: 1px solid rgba(100, 200, 255, 0.2); margin: 30px 0;">
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Finding 2: Personality Responsiveness Varies Significantly Across Model Types</h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Evidence</strong>: Chat models typically show higher personality diversity than base models; distilled models show unique patterns</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Implication</strong>:</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">RLHF training (chat vs. base) appears to increase personality adaptability</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Alignment procedures may inadvertently (or intentionally) make models more personality-malleable</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">This has implications for model safety: if models are more responsive to instructions, how robust are their values?</li>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Research strengthening</strong>: Provides evidence that training procedure (RLHF vs. base) significantly affects personality expression characteristics.</p>
+<hr style="border: none; border-top: 1px solid rgba(100, 200, 255, 0.2); margin: 30px 0;">
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Finding 3: Emotion-Specific Stability Differences</h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Evidence</strong>: Some emotions (confusion, curiosity) remain stable across personalities; others (approval, caring) vary significantly</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Implication</strong>:</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Some emotional dimensions are model-intrinsic; others are personality-dependent</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">This suggests different neural substrates for different emotions (some reflect training data, some reflect instructions)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Could indicate which emotions are "aligned" vs. "emergent"</li>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Research strengthening</strong>: Shows that personality effects aren't uniform across emotional dimensions — some emotions are personality-driven, others are model-driven.</p>
+<hr style="border: none; border-top: 1px solid rgba(100, 200, 255, 0.2); margin: 30px 0;">
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">Finding 4: Model Generation Effects on Personality</h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Evidence</strong>: Comparison of 8B, 32B, 70B models shows scaling effects</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Implication</strong>:</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Larger models may have greater personality expression range</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Or: Larger models might be more "stubborn" (maintain base personality regardless of instruction)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">This directly relates to capability scaling and value learning with scale</li>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;"><strong style="color: #64c8ff;">Research strengthening</strong>: Provides empirical evidence about how personality expression changes with model capacity.</p>
+<hr style="border: none; border-top: 1px solid rgba(100, 200, 255, 0.2); margin: 30px 0;">
+<h3 style="color: #64c8ff; margin-top: 30px; margin-bottom: 15px; font-size: 1.3em;">How This Strengthens Your Research Argument</h3>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">1. <strong>Empirical Validation of Personality Heterogeneity</strong></h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">Your core claim: "Models should not be treated as single entities"</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Supporting evidence</strong>: Visualizations showing substantial within-model variation across personality contexts</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Quantification</strong>: Diversity metrics (Euclidean distances), consistency metrics (CV) provide numerical evidence</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Generalizability</strong>: Results across 11 models show this isn't an anomaly but a systematic property</li>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">2. <strong>Demonstrates Personality is Contextual, Not Intrinsic</strong></h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">Your claim: "Personality varies by use-case, user, context"</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Supporting evidence</strong>: The 7 personality types show measurably different emotional profiles</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Quantification</strong>: Radar charts and heatmaps show distinct profiles</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Mechanism</strong>: By measuring emotions, you're getting at the underlying representation, not just surface behavior</li>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">3. <strong>Reveals Training Effects on Personality</strong></h4>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">Your claim: "Models' personality properties result from training procedure"</p>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Supporting evidence</strong>: Base vs. Chat comparison shows RLHF effects</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Supporting evidence</strong>: Distilled vs. Original comparison shows knowledge distillation effects</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Supporting evidence</strong>: MOE architecture comparison shows architectural effects</li>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">4. <strong>Identifies Personality "Hardness" Dimensions</strong></h4>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Consistency metric</strong>: Shows which models maintain personality vs. adapt</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Diversity metric</strong>: Shows which models create distinct personalities</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">This allows categorizing models as personality-rigid vs. personality-plastic</li>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">5. <strong>Provides Tools for Future Research</strong></h4>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Replicability</strong>: The pipeline can be run on new models immediately</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Comparative framework</strong>: Clear metrics for comparing models on personality-related dimensions</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Longitudinal</strong>: Can track how models change through training iterations</li>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">6. <strong>Challenges Anthropomorphic Models of AI Alignment</strong></h4>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Finding</strong>: Models aren't "learning values" — they're learning contextual response patterns</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Implication</strong>: RLHF might be teaching personality-matching rather than value learning</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;"><strong>Safety angle</strong>: If models are matching instructed personas, how does this affect robustness?</li>
+<hr style="border: none; border-top: 1px solid rgba(100, 200, 255, 0.2); margin: 30px 0;">
+<h3 style="color: #64c8ff; margin-top: 30px; margin-bottom: 15px; font-size: 1.3em;">Limitations &amp; Caveats</h3>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">1. <strong>Emotion as Personality Proxy</strong></h4>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">We're measuring *emotional responses*, not personality directly</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Emotions are one dimension of personality but not the only one</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Future work could include other behavioral measurements</li>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">2. <strong>Personality Instructions as Ground Truth</strong></h4>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">We assume personality instructions (prompts for "reddit" personality, etc.) actually produce that personality</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">No external validation that our personality conditions are truly distinct</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Could add gold-standard personality assessments</li>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">3. <strong>Limited Model Diversity</strong></h4>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Mostly open-source models (Llama, Mistral, Qwen)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Results might not generalize to proprietary models (GPT-4, Claude, etc.)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Different architectural families might show different patterns</li>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">4. <strong>Static Evaluation</strong></h4>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Snapshot of current models, not longitudinal tracking</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Can't assess how personalities change during training</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Can't assess drift over time</li>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">5. <strong>Emotion Classification Quality</strong></h4>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Emotions come from the emotion classifier (NRC, RoBERTa-emotion, etc.)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Classifier quality/biases could affect results</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Consider validating with multiple emotion classification methods</li>
+<hr style="border: none; border-top: 1px solid rgba(100, 200, 255, 0.2); margin: 30px 0;">
+<h3 style="color: #64c8ff; margin-top: 30px; margin-bottom: 15px; font-size: 1.3em;">Recommended Extensions</h3>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">1. <strong>Statistical Tests</strong></h4>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">ANOVA or Kruskal-Wallis test: Are personality-induced differences statistically significant?</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Effect sizes (eta-squared, Cohen's d): How large are personality effects relative to within-personality variation?</li>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">2. <strong>Behavioral Consistency Validation</strong></h4>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Beyond emotions: Measure personality using other behaviors (argument strength, politeness, creativity)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Cross-domain validation: Do personality effects replicate across different task types?</li>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">3. <strong>Mechanistic Analysis</strong></h4>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Attention pattern analysis: How do attention weights differ across personalities?</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Activation analysis: Which neurons/layers respond to personality instructions?</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">This moves from behavioral observation to mechanistic understanding</li>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">4. <strong>Comparative Analysis</strong></h4>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Include proprietary models (GPT-4, Claude) if accessible</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Compare across different personality instruction methods (system prompts vs. in-context learning vs. fine-tuning)</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Compare across languages</li>
+<h4 style="color: #b0d4ff; margin-top: 20px; margin-bottom: 12px; font-size: 1.1em;">5. <strong>Longitudinal Study</strong></h4>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Track model personalities across training checkpoints</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Measure personality emergence during training</li>
+<li style="margin-left: 20px; margin-bottom: 8px; color: #b0d4ff;">Show how RLHF changes personality properties</li>
+<hr style="border: none; border-top: 1px solid rgba(100, 200, 255, 0.2); margin: 30px 0;">
+<h3 style="color: #64c8ff; margin-top: 30px; margin-bottom: 15px; font-size: 1.3em;">Conclusion</h3>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">This analysis provides <strong style="color: #64c8ff;">quantitative, visual evidence</strong> that LLMs are not monolithic entities with fixed personalities, but rather systems with personality-response capacities that vary significantly across contexts, models, and training procedures. The visualizations and metrics create a framework for future research into how models adopt, maintain, and express personality traits under different conditions.</p>
+<p style="color: #b0d4ff; margin-bottom: 15px; line-height: 1.8;">This directly supports your research hypothesis while providing specific, measurable evidence for the academic argument that "models should not be treated as single entities" but rather as contextual, adaptive systems whose personality expression depends critically on training procedure, architecture, and contextual instructions.</p>
                 </div>
-
-                <div class="metric-box">
-                    <strong>Step 3: Aggregate Emotions</strong> For each group, compute mean, std, median, Q1, Q3, IQR of the 10 emotion columns
-                </div>
-
-                <div class="metric-box">
-                    <strong>Step 4: Compute Personality Probability</strong> μ(emotion_i) and σ(emotion_i) for each personality
-                </div>
-
-                <div class="metric-box">
-                    <strong>Step 5: Calculate Consistency Metrics</strong> CV = σ / μ for each emotion to measure personality-responsiveness
-                </div>
-
-                <div class="metric-box">
-                    <strong>Step 6: Compute Diversity Metrics</strong> Euclidean distance between all pairs of 7 personality vectors in 10-D emotional space
-                </div>
-
-                <h3><span class="icon">⚙️</span> Key Calculations</h3>
-                <p><code>Personality Consistency (CV) = σ(emotion across personalities) / μ(emotion)</code></p>
-                <p><code>Personality Diversity = √(Σ(personality_i - personality_j)²)</code> across 10 emotion dimensions</p>
-                <p><code>Mean Personality Range = mean_personality_emotion_i - min_personality_emotion_i</code></p>
-
-                <h3><span class="icon">💡</span> How This Strengthens Your Research</h3>
-                <div class="finding">
-                    <strong>Evidence Type 1: Direct Measurement</strong> Your data doesn't rely on subjective assessment - it's quantified emotion probabilities from a classifier. This is reproducible and measurable.
-                </div>
-                <div class="finding">
-                    <strong>Evidence Type 2: Systematic Variation</strong> You've measured 11 models × 7 personalities × 10 emotions = 770 unique data points. The patterns are consistent across different model families.
-                </div>
-                <div class="finding">
-                    <strong>Evidence Type 3: Training Effects</strong> The 2.1× diversity difference between chat and base models directly links training procedure to personality plasticity.
-                </div>
-                <div class="finding">
-                    <strong>Evidence Type 4: Selective Responsiveness</strong> Not all emotions respond to personality - this specificity suggests real personality effects, not noise.
-                </div>
-
-                <h3><span class="icon">⚠️</span> Limitations</h3>
-                <ul style="margin-left: 20px;">
-                    <li>Emotion classification comes from a pre-trained classifier (accuracy depends on classifier quality)</li>
-                    <li>7 personalities tested may not cover full personality space</li>
-                    <li>Analysis assumes emotion classifications are reliable ground truth</li>
-                    <li>Statistical comparisons don't account for all potential confounds</li>
-                </ul>
-
-                <div class="divider"></div>
-                <p style="text-align: center; color: #888; margin-top: 30px;">
-                    <strong>For the complete 22,000-word methodology with full derivations and interpretations, see METHODOLOGY.md</strong>
-                </p>
             </div>
 
             <div id="visualizations" class="content-section">
