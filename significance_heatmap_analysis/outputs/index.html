@@ -390,6 +390,35 @@
     </div>
 
 
+    <div class="interpretation-guide" style="background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); color: #e0e0e0; padding: 30px; margin: 30px 0; border-radius: 8px; border: 1px solid rgba(100, 200, 255, 0.2);">
+        <h3 style="color: #a0d8ff; margin-bottom: 20px; font-size: 1.3em;">📊 How to Read These Heatmaps</h3>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
+            <div>
+                <h4 style="color: #64c8ff; margin-bottom: 12px;">🔢 What the Numbers Mean</h4>
+                <ul style="list-style: none; color: #b0d4ff;">
+                    <li style="margin-bottom: 10px;"><strong style="color: #a0d8ff;">Mean Difference (±0.XXX):</strong> How much the emotion probability changed between personality A and personality B. Positive = increased, negative = decreased.</li>
+                    <li style="margin-bottom: 10px;"><strong style="color: #a0d8ff;">Asterisks (***):</strong> Indicates statistical significance (p < 0.05 with FDR correction). More asterisks = stronger evidence.</li>
+                    <li style="margin-bottom: 10px;"><strong style="color: #a0d8ff;">Cell Color:</strong> Warmer colors (red) = stronger positive effect; cooler colors (blue) = stronger negative effect.</li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 style="color: #64c8ff; margin-bottom: 12px;">⬜ Why Some Cells Are Blank</h4>
+                <ul style="list-style: none; color: #b0d4ff;">
+                    <li style="margin-bottom: 10px;"><strong style="color: #a0d8ff;">Missing Data:</strong> Not all model-personality-context combinations were tested in the dataset.</li>
+                    <li style="margin-bottom: 10px;"><strong style="color: #a0d8ff;">NaN Values:</strong> These cells contain no observations, so no statistical test was possible.</li>
+                    <li style="margin-bottom: 10px;"><strong style="color: #a0d8ff;">What It Means:</strong> A blank cell is <em>different</em> from a cell showing a small effect—blank means "untested," not "no effect."</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(100, 200, 255, 0.2);">
+            <h4 style="color: #64c8ff; margin-bottom: 12px;">💡 Interpretation Example</h4>
+            <p style="color: #b0d4ff; line-height: 1.7;">A cell showing "<strong style="color: #a0d8ff;">+0.045 ***</strong>" means: When models received personality instruction A vs B, the emotion probability increased by 4.5 percentage points, and this difference is statistically significant. A blank cell in the same row/column means that particular model-context combination wasn't in our dataset.</p>
+        </div>
+    </div>
+
     <div class="results-table" id="table-joy" style="display: none;">
         <h3>JOY - Top 10 Significant Effects</h3>
         <table>
